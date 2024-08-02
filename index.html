@@ -4,11 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ज्ञा | naa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>ज्ञा | One Platform, Infinite Possibilities</title>
+    <meta name="description" content="ज्ञा is a platform that offers federated app development, GenAI orchestrated DevOps, AI-powered logging, tracing, analytics, and much more.">
+    <meta name="keywords" content="AI, federated apps, GenAI, DevOps, logging, tracing, analytics">
+    <meta name="author" content="jna.tech">
+    <meta property="og:title" content="ज्ञा | One Platform, Infinite Possibilities">
+    <meta property="og:description" content="ज्ञा is a platform that offers federated app development, GenAI orchestrated DevOps, AI-powered logging, tracing, analytics, and much more.">
+    <meta property="og:image" content="https://yourdomain.com/path-to-image.jpg">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:type" content="website">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'YOUR_TRACKING_ID');
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
@@ -200,6 +215,20 @@
         #main-content {
             transition: margin-right 0.5s;
         }
+
+        @media screen and (max-width: 768px) {
+            .feature-panel {
+                width: 100%;
+            }
+
+            #main-content {
+                margin-right: 0;
+            }
+
+            .feature-panel-content {
+                top: 20%;
+            }
+        }
     </style>
 </head>
 
@@ -261,18 +290,22 @@
 
             <p class="text-2xl glow mb-4">Features</p>
             <div class="feature-card">
-                <img src="https://illustrations.popsy.co/gray/app-launch.svg" alt="Astra">
-                <p class="glow text-sm">GenAI-Orchestrated Apps development</p>
+                <img src="https://illustrations.popsy.co/amber/app-launch.svg" alt="Astra">
+                <p class="glow text-sm">Gen AI Conversational workflow</p>
             </div>
             <div class="feature-card">
-                <img src=" https://illustrations.popsy.co/gray/achievement.svg" alt="Yojana">
+                <img src="https://illustrations.popsy.co/blue/achievement.svg" alt="Yojana">
                 <p class="glow text-sm">Federated Apps</p>
             </div>
-          
             <div class="feature-card">
-                <img src="https://illustrations.popsy.co/gray/keynote-presentation.svg" alt="Yojana">
+                <img src="https://illustrations.popsy.co/green/engineer.svg" alt="Stiti">
+                <p class="glow text-sm">Universal entities</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://illustrations.popsy.co/red/keynote-presentation.svg" alt="Yojana">
                 <p class="glow text-sm">Apps for productivity built in</p>
             </div>
+
         </div>
     </div>
 
@@ -328,7 +361,7 @@
             headerLogo.style.color = randomColor;
         }
 
-        //setInterval(changeColor, 3000); // Change color every 3 seconds
+        // setInterval(changeColor, 3000); // Change color every 3 seconds
 
         function openFeaturePanel() {
             document.getElementById("feature-panel").style.width = "30%";
