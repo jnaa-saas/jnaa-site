@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jnaa | ज्ञा</title>
+    <title>jna | ज्ञा</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Add this line -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png"> <!-- Add this line -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png"> <!-- Add this line -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
@@ -132,6 +132,74 @@
         .feature-icon {
             margin-right: 5px;
         }
+
+        .feature-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: width 0.5s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .feature-panel-content {
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .feature-card {
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            width: 80%;
+            box-shadow: 0 0 11px 7px rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card img {
+            max-width: 100%;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        .feature-panel a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .feature-panel a:hover {
+            color: #f1f1f1;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: white;
+        }
+
+        .glow-icon {
+            transition: filter 2s ease-in-out;
+            filter: drop-shadow(0 0 5px var(--glow-color, rgba(255, 255, 255, 0.5))) drop-shadow(0 0 10px var(--glow-color, rgba(255, 255, 255, 0.4))) drop-shadow(0 0 15px var(--glow-color, rgba(255, 255, 255, 0.3))) drop-shadow(0 0 20px var(--glow-color, rgba(255, 255, 255, 0.2))) drop-shadow(0 0 25px var(--glow-color, rgba(255, 255, 255, 0.1)));
+        }
+
+        #main-content {
+            transition: margin-right 0.5s;
+        }
     </style>
 </head>
 
@@ -140,11 +208,13 @@
         <div class="text-2xl font-extrabold glow fade-in">
             ज्ञा
         </div>
+        <img src="images/340-coding.png" class="w-10 h-10 cursor-pointer glow-icon" onclick="openFeaturePanel()"
+            title="Features" alt="Features">
     </header>
 
-    <main class="flex flex-col items-center justify-center min-h-screen text-center px-4">
-        <h1 class="text-8xl font-extrabold glow fade-in">ज्ञा</h1>
-        <p class="mt-4 text-2xl fade-in">ONE PLATFORM <span class="align-middle text-6xl">&#8734;</span> POSSIBILITIES
+    <main id="main-content" class="flex flex-col items-center justify-center min-h-screen text-center px-4">
+        <h1 class="text-6xl font-extrabold glow fade-in">ज्ञा</h1>
+        <p class="mt-4 text-xl fade-in">ONE PLATFORM <span class="align-middle text-4xl">&#8734;</span> POSSIBILITIES
         </p>
 
         <section class="py-12">
@@ -181,11 +251,34 @@
         </section>
 
         <footer class="py-20 text-center">
-            <p class="text-sm text-gray-400">jnaa | ज्ञा tech inc. All rights reserved. 2024</p>
+            <p class="text-sm text-gray-400">jna | ज्ञा tech inc. All rights reserved. 2024</p>
         </footer>
-
     </main>
 
+    <div id="feature-panel" class="feature-panel">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeFeaturePanel()">&times;</a>
+        <div class="feature-panel-content">
+
+            <p class="text-2xl glow mb-4">Features</p>
+            <div class="feature-card">
+                <img src="https://illustrations.popsy.co/gray/app-launch.svg" alt="Astra">
+                <p class="glow text-sm">Gen AI Conversational workflow</p>
+            </div>
+            <div class="feature-card">
+                <img src=" https://illustrations.popsy.co/gray/achievement.svg" alt="Yojana">
+                <p class="glow text-sm">Federated Apps</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://illustrations.popsy.co/gray/engineer.svg" alt="Stiti">
+                <p class="glow text-sm">Universal entities</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://illustrations.popsy.co/gray/keynote-presentation.svg" alt="Yojana">
+                <p class="glow text-sm">Apps for productivity built in</p>
+            </div>
+
+        </div>
+    </div>
 
     <script>
         document.documentElement.style.setProperty('--bg-color-start', '#000000');
@@ -239,8 +332,17 @@
             headerLogo.style.color = randomColor;
         }
 
-        // Uncomment the following line to enable color change every 3 seconds
         //setInterval(changeColor, 3000); // Change color every 3 seconds
+
+        function openFeaturePanel() {
+            document.getElementById("feature-panel").style.width = "30%";
+            document.getElementById("main-content").style.marginRight = "30%";
+        }
+
+        function closeFeaturePanel() {
+            document.getElementById("feature-panel").style.width = "0";
+            document.getElementById("main-content").style.marginRight = "0";
+        }
     </script>
 </body>
 
