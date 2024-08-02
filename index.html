@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jna | ज्ञा</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Add this line -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png"> <!-- Add this line -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png"> <!-- Add this line -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
@@ -33,7 +36,7 @@
         .glow {
             text-shadow: 0 0 5px var(--glow-color, rgba(255, 255, 255, 0.5)),
                 0 0 10px var(--glow-color, rgba(255, 255, 255, 0.4)),
-                0 0 15px var(--glow-color, rgba(255, 255, 255, 0.3)),
+                0 0 15px var (--glow-color, rgba(255, 255, 255, 0.3)),
                 0 0 20px var(--glow-color, rgba(255, 255, 255, 0.2)),
                 0 0 25px var(--glow-color, rgba(255, 255, 255, 0.1));
             transition: color 2s ease-in-out, text-shadow 2s ease-in-out;
@@ -133,112 +136,7 @@
 </head>
 
 <body class="background-animation">
-    <header class="flex justify-between items-center p-4">
-        <div class="text-2xl font-extrabold glow fade-in">
-            ज्ञा
-        </div>
-    </header>
-
-    <main class="flex flex-col items-center justify-center min-h-screen text-center px-4">
-        <h1 class="text-8xl font-extrabold glow fade-in">ज्ञा</h1>
-        <p class="mt-4 text-2xl fade-in">ONE PLATFORM <span class="align-middle text-6xl">&#8734;</span> POSSIBILITIES
-        </p>
-
-        <section class="py-12">
-            <div class="max-w-full mx-auto px-4">
-                <div class="feature-marquee">
-                    <div class="feature-marquee-content">
-                        <div class="feature-box">
-                            <span class="feature-icon">🔧</span> Federated App Development
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon">🤖</span> GenAI-Orchestrated DevOps
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-ico mr-2">📈</span> AI-Powered Logging, Tracing, Analytics
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon mr-2">📦</span> Container-Native Applications
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon mr-2">💻</span> GitHub for Apps
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon mr-2">🚀</span> Rapid Idea Evolution
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon mr-2">🔍</span> Optimized for Open AI and Local Models
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon mr-2">📱</span> Instant Productivity with Built-in Apps
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer class="py-20 text-center">
-            <p class="text-sm text-gray-400">jna | ज्ञा tech inc. All rights reserved. 2024</p>
-        </footer>
-
-    </main>
-
-
-    <script>
-        document.documentElement.style.setProperty('--bg-color-start', '#000000');
-        document.documentElement.style.setProperty('--bg-color-end', '#434343');
-        document.documentElement.style.setProperty('--text-color', '#FFFFFF');
-        document.documentElement.style.setProperty('--glow-color', '#aaaaaa');
-
-        // Set floating characters opacity and speed
-        document.documentElement.style.setProperty('--floating-opacity', '0.1');
-        document.documentElement.style.setProperty('--floating-speed', '10s');
-
-        // Set feature card background opacity
-        document.documentElement.style.setProperty('--background-opacity', '0.6'); // Change this value to adjust transparency
-
-        const floatingCharactersEnabled = true;
-
-        if (floatingCharactersEnabled) {
-            const floatingCharactersContainer = document.createElement('div');
-            floatingCharactersContainer.classList.add('floating-characters');
-            document.body.appendChild(floatingCharactersContainer);
-
-            for (let i = 0; i < 500; i++) {
-                const char = document.createElement('div');
-                char.textContent = 'ज्ञा';
-                char.classList.add('floating-character');
-                char.style.left = Math.random() * 100 + 'vw';
-                char.style.top = Math.random() * 100 + 'vh';
-                char.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                char.style.fontSize = (Math.random() * 18 + 6) + 'px';
-                floatingCharactersContainer.appendChild(char);
-            }
-        }
-
-        // Generate random colors similar to the initial color theme
-        function getRandomColor() {
-            const baseColor = 128; // base for mid-tone gray
-            const variation = 40; // variation range for color components
-            const r = baseColor + Math.floor(Math.random() * variation - variation / 2);
-            const g = baseColor + Math.floor(Math.random() * variation - variation / 2);
-            const b = baseColor + Math.floor(Math.random() * variation - variation / 2);
-            return `rgb(${r},${g},${b})`;
-        }
-
-        // Sober color options for the ज्ञा character
-        const mainCharacter = document.querySelector('main h1');
-        const headerLogo = document.querySelector('header div');
-
-        function changeColor() {
-            const randomColor = getRandomColor();
-            mainCharacter.style.color = randomColor;
-            headerLogo.style.color = randomColor;
-        }
-
-        // Uncomment the following line to enable color change every 3 seconds
-        setInterval(changeColor, 3000); // Change color every 3 seconds
-    </script>
+    <!-- ... rest of your HTML content ... -->
 </body>
 
 </html>
