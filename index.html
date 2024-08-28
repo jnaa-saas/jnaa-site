@@ -5,30 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ज्ञा | One Platform, Infinite Possibilities</title>
-    <meta name="description" content="ज्ञा is a platform that offers federated app development, GenAI orchestrated DevOps, AI-powered logging, tracing, analytics, and much more.">
+    <meta name="description"
+        content="ज्ञा is a platform that offers federated app development, GenAI orchestrated DevOps, AI-powered logging, tracing, analytics, and much more.">
     <meta name="keywords" content="AI, federated apps, GenAI, DevOps, logging, tracing, analytics">
     <meta name="author" content="jna.tech">
-    <meta property="og:site_name" content="Jnaa.Tech"/>
-    <meta property="og:title" content="Jnaa.Tech"/>
-    <meta property="og:description" content="One Platform, Infinite Possibilities - Create federated apps powered by GenAI"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:image" content="https://jnaa.tech/favicon-32x32.png"/>
-    <meta property="og:locale" content="en_IN"/>
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="Jnaa.Tech"/>
-    <meta name="twitter:description" content="One Platform, Infinite Possibilities - Create federated apps powered by GenAI"/>
-    <meta name="twitter:image" content="https://jnaa.tech/favicon-32x32.png"/>
-    <meta name="twitter:image:alt" content="Jnaa.Tech"/>
+    <meta property="og:site_name" content="Jnaa.Tech" />
+    <meta property="og:title" content="Jnaa.Tech" />
+    <meta property="og:description"
+        content="One Platform, Infinite Possibilities - Create federated apps powered by GenAI" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://jnaa.tech/favicon-32x32.png" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Jnaa.Tech" />
+    <meta name="twitter:description"
+        content="One Platform, Infinite Possibilities - Create federated apps powered by GenAI" />
+    <meta name="twitter:image" content="https://jnaa.tech/favicon-32x32.png" />
+    <meta name="twitter:image:alt" content="Jnaa.Tech" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-17QB0PJLSH"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-17QB0PJLSH');
+        gtag('config', 'G-17QB0PJLSH');
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -39,6 +42,9 @@
             color: var(--text-color);
             font-family: 'Roboto', sans-serif;
             overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .fade-in {
@@ -120,6 +126,8 @@
             box-sizing: border-box;
             margin-top: 4rem;
             margin-bottom: 3rem;
+            display: none;
+            /* Hide by default, controlled by feature flag */
         }
 
         .feature-marquee-content {
@@ -220,7 +228,39 @@
         }
 
         #main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
             transition: margin-right 0.5s;
+            flex-direction: column;
+        }
+
+        .animated-feature-box {
+            opacity: 0;
+            transform: scale(0.5);
+            animation: appear 1s ease-in-out forwards;
+            margin-top: 10px;
+            font-size: 0.875rem;
+        }
+
+        @keyframes appear {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #aaa;
         }
 
         @media screen and (max-width: 768px) {
@@ -244,57 +284,59 @@
         <div class="text-2xl font-extrabold glow fade-in">
             ज्ञा | jnaa
         </div>
-        <img src="images/340-coding.png" class="w-10 h-10 cursor-pointer glow-icon" onclick="openFeaturePanel()"
-            title="Features" alt="Features">
+        <img src="images/340-coding.png" id="feature-icon" class="w-10 h-10 cursor-pointer glow-icon"
+            onclick="openFeaturePanel()" title="Features" alt="Features">
     </header>
 
-    <main id="main-content" class="flex flex-col items-center justify-center min-h-screen text-center px-4">
-        <h1 class="text-6xl font-extrabold glow fade-in">ज्ञा</h1>
-        <p class="mt-4 text-xl fade-in">ONE PLATFORM <span class="align-middle text-4xl">&#8734;</span> POSSIBILITIES
-        </p>
+    <main id="main-content">
+        <div>
+            <h1 class="text-6xl font-extrabold glow fade-in">ज्ञा</h1>
+            <p class="mt-4 text-xl fade-in">ONE PLATFORM <span class="align-middle text-4xl">&#8734;</span>
+                POSSIBILITIES</p>
+        </div>
+        <div id="animated-features">
+            <!-- Animated feature boxes will be injected here -->
+        </div>
 
-        <section class="py-12">
+        <section class="py-12 feature-marquee" id="scrollable-features">
             <div class="max-w-full mx-auto px-4">
-                <div class="feature-marquee">
-                    <div class="feature-marquee-content">
-                        <div class="feature-box">
-                            <span class="feature-icon">🔧</span> Federated App Development
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon">🤖</span> GenAI-Orchestrated DevOps
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-ico mr-2">📈</span> AI-Powered Logging, Tracing, Analytics
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon mr-2">📦</span> Container-Native Applications
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon mr-2">💻</span> GitHub for Apps
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon mr-2">🚀</span> Rapid Idea Evolution
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon mr-2">🔍</span> Optimized for Open AI and Local Models
-                        </div>
-                        <div class="feature-box">
-                            <span class="feature-icon mr-2">📱</span> Instant Productivity with Built-in Apps
-                        </div>
+                <div class="feature-marquee-content">
+                    <div class="feature-box">
+                        <span class="feature-icon">🔧</span> Federated App Development
+                    </div>
+                    <div class="feature-box">
+                        <span class="feature-icon">🤖</span> GenAI-Orchestrated DevOps
+                    </div>
+                    <div class="feature-box">
+                        <span class="feature-ico mr-2">📈</span> AI-Powered Logging, Tracing, Analytics
+                    </div>
+                    <div class="feature-box">
+                        <span class="feature-icon mr-2">📦</span> Container-Native Applications
+                    </div>
+                    <div class="feature-box">
+                        <span class="feature-icon mr-2">💻</span> GitHub for Apps
+                    </div>
+                    <div class="feature-box">
+                        <span class="feature-icon mr-2">🚀</span> Rapid Idea Evolution
+                    </div>
+                    <div class="feature-box">
+                        <span class="feature-icon mr-2">🔍</span> Optimized for Open AI and Local Models
+                    </div>
+                    <div class="feature-box">
+                        <span class="feature-icon mr-2">📱</span> Instant Productivity with Built-in Apps
                     </div>
                 </div>
             </div>
         </section>
-
-        <footer class="py-20 text-center">
-            <p class="text-sm text-gray-400">jnaa | ज्ञा tech inc. All rights reserved. 2024</p>
-        </footer>
     </main>
+
+    <footer>
+        <p class="text-sm">jnaa | ज्ञा tech inc. All rights reserved. 2024</p>
+    </footer>
 
     <div id="feature-panel" class="feature-panel">
         <a href="javascript:void(0)" class="close-btn" onclick="closeFeaturePanel()">&times;</a>
         <div class="feature-panel-content">
-
             <p class="text-2xl glow mb-4">Features</p>
             <div class="feature-card">
                 <img src="https://illustrations.popsy.co/gray/app-launch.svg" alt="Astra">
@@ -329,6 +371,7 @@
         document.documentElement.style.setProperty('--background-opacity', '0.6'); // Change this value to adjust transparency
 
         const floatingCharactersEnabled = true;
+        const featureFlagEnabled = true; // Feature flag variable for animated features
 
         if (floatingCharactersEnabled) {
             const floatingCharactersContainer = document.createElement('div');
@@ -345,6 +388,30 @@
                 char.style.fontSize = (Math.random() * 18 + 6) + 'px';
                 floatingCharactersContainer.appendChild(char);
             }
+        }
+
+        if (featureFlagEnabled) {
+            const features = [
+                { icon: '🔧', text: 'Federated App Development' },
+                { icon: '🤖', text: 'GenAI-Orchestrated DevOps' },
+                { icon: '📈', text: 'AI-Powered Logging, Tracing, Analytics' },
+                { icon: '📦', text: 'Container-Native Applications' },
+                { icon: '💻', text: 'GitHub for Apps' },
+                { icon: '🚀', text: 'Rapid Idea Evolution' },
+                { icon: '🔍', text: 'Optimized for Open AI and Local Models' },
+                { icon: '📱', text: 'Instant Productivity with Built-in Apps' },
+            ];
+
+            const animatedFeaturesContainer = document.getElementById('animated-features');
+            features.forEach((feature, index) => {
+                const featureBox = document.createElement('div');
+                featureBox.classList.add('animated-feature-box', 'glow');
+                featureBox.style.animationDelay = `${index * 0.3}s`; // Stagger animation
+                featureBox.innerHTML = `<span class="feature-icon">${feature.icon}</span> ${feature.text}`;
+                animatedFeaturesContainer.appendChild(featureBox);
+            });
+        } else {
+            document.getElementById('scrollable-features').style.display = 'block';
         }
 
         // Generate random colors similar to the initial color theme
@@ -369,9 +436,19 @@
 
         // setInterval(changeColor, 3000); // Change color every 3 seconds
 
+        // Disable the feature icon by default
+        const featureIcon = document.getElementById("feature-icon");
+        if (!featureFlagEnabled) {
+            featureIcon.style.display = "none";
+        }
+
         function openFeaturePanel() {
-            document.getElementById("feature-panel").style.width = "30%";
-            document.getElementById("main-content").style.marginRight = "30%";
+            if (featureFlagEnabled) {
+                document.getElementById("feature-panel").style.width = "30%";
+                document.getElementById("main-content").style.marginRight = "30%";
+            } else {
+                console.log("Feature is disabled");
+            }
         }
 
         function closeFeaturePanel() {
