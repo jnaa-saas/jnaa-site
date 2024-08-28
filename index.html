@@ -102,7 +102,7 @@
             position: absolute;
             font-size: 24px;
             opacity: var(--floating-opacity);
-            color: var(--text-color);
+            color: var(--floating-color, #FFFFFF);
             animation: floatCharacter var(--floating-speed) linear infinite;
         }
 
@@ -157,6 +157,8 @@
             box-shadow: 0 0 10px var(--glow-color);
             background: rgba(0, 0, 0, var(--background-opacity));
             font-size: 0.875rem;
+            text-shadow: none;
+            /* Remove glow from feature text */
         }
 
         .feature-icon {
@@ -174,6 +176,8 @@
             transition: width 0.5s;
             padding-top: 60px;
             z-index: 1000;
+            display: none;
+            /* Hide by default */
         }
 
         .feature-panel-content {
@@ -233,7 +237,8 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 40px;
+            /* Increased padding */
             transition: margin-right 0.5s;
             flex-direction: column;
         }
@@ -244,6 +249,8 @@
             animation: appear 1s ease-in-out forwards;
             margin-top: 10px;
             font-size: 0.875rem;
+            text-shadow: none;
+            /* Remove glow from animated feature text */
         }
 
         @keyframes appear {
@@ -266,6 +273,8 @@
         @media screen and (max-width: 768px) {
             .feature-panel {
                 width: 100%;
+                display: none;
+                /* Hide by default on mobile */
             }
 
             #main-content {
@@ -284,7 +293,8 @@
         <div class="text-2xl font-extrabold glow fade-in">
             ज्ञा | jnaa
         </div>
-
+        <img src="images/340-coding.png" id="feature-icon" class="w-10 h-10 cursor-pointer glow-icon"
+            onclick="openFeaturePanel()" title="Features" alt="Features">
     </header>
 
     <main id="main-content">
@@ -297,11 +307,11 @@
             <!-- Animated feature boxes will be injected here -->
         </div>
 
-        <section class="py-16 feature-marquee" id="scrollable-features">
+        <section class="py-12 feature-marquee" id="scrollable-features">
             <div class="max-w-full mx-auto px-4">
                 <div class="feature-marquee-content">
                     <div class="feature-box">
-                        <span class="feature-icon">🔧</span> Federated App Development
+                        <span class="feature-icon">🔧</span> Develop Federated Apps
                     </div>
                     <div class="feature-box">
                         <span class="feature-icon">🤖</span> GenAI-Orchestrated DevOps
@@ -336,22 +346,22 @@
     <div id="feature-panel" class="feature-panel">
         <a href="javascript:void(0)" class="close-btn" onclick="closeFeaturePanel()">&times;</a>
         <div class="feature-panel-content">
-            <p class="text-2xl glow mb-4">Features</p>
+            <p class="text-2xl mb-4">Features</p> <!-- Removed glow effect -->
             <div class="feature-card">
                 <img src="https://illustrations.popsy.co/gray/app-launch.svg" alt="Astra">
-                <p class="glow text-sm">GenAI-Orchestrated Apps development</p>
+                <p class="text-sm">GenAI-Orchestrated Apps development</p> <!-- Removed glow effect -->
             </div>
             <div class="feature-card">
                 <img src="https://illustrations.popsy.co/gray/achievement.svg" alt="Yojana">
-                <p class="glow text-sm">Federated Apps</p>
+                <p class="text-sm">Federated Apps</p> <!-- Removed glow effect -->
             </div>
             <div class="feature-card">
                 <img src="https://illustrations.popsy.co/gray/engineer.svg" alt="Stiti">
-                <p class="glow text-sm">Universal entities</p>
+                <p class="text-sm">Universal entities</p> <!-- Removed glow effect -->
             </div>
             <div class="feature-card">
                 <img src="https://illustrations.popsy.co/gray/keynote-presentation.svg" alt="Yojana">
-                <p class="glow text-sm">Apps for productivity built in</p>
+                <p class="text-sm">Apps for productivity built in</p> <!-- Removed glow effect -->
             </div>
         </div>
     </div>
@@ -363,15 +373,21 @@
         document.documentElement.style.setProperty('--glow-color', '#aaaaaa');
 
         // Set floating characters opacity and speed
-        document.documentElement.style.setProperty('--floating-opacity', '0.1');
+        document.documentElement.style.setProperty('--floating-opacity', '0.2');
         document.documentElement.style.setProperty('--floating-speed', '10s');
 
         // Set feature card background opacity
         document.documentElement.style.setProperty('--background-opacity', '0.6'); // Change this value to adjust transparency
 
+        // Set Indic colors for floating characters (e.g., saffron, white, green)
+        const floatingColors = ['#FFFFFF'];
+
+        const randomColor = floatingColors[Math.floor(Math.random() * floatingColors.length)];
+        document.documentElement.style.setProperty('--floating-color', randomColor);
+
         const floatingCharactersEnabled = true;
-        const featureFlagEnabled = true; // Feature flag variable for animated features
-        const featureSidePanelFlagEnabled = false;
+        const animatedFeaturesEnabled = true; // Feature flag for animated features
+        const sidePanelEnabled = false; // Feature flag for side panel (disabled by default)
 
         if (floatingCharactersEnabled) {
             const floatingCharactersContainer = document.createElement('div');
@@ -390,12 +406,12 @@
             }
         }
 
-        if (featureFlagEnabled) {
+        if (animatedFeaturesEnabled) {
             const features = [
-                { icon: '🔧', text: 'Federated App Development' },
-                { icon: '🤖', text: 'GenAI-Orchestrated DevOps' },
-                { icon: '📈', text: 'AI-Powered Logging, Tracing, Analytics' },
-                { icon: '📦', text: 'Container-Native Applications' },
+                { icon: '🔧', text: 'Develop Federated Apps' },
+                { icon: '🤖', text: 'GenAI-Driven SDLC' },
+                { icon: '📈', text: 'AI-Powered Logging & Analytics' },
+                { icon: '📦', text: 'Build Container-Native Applications' },
                 { icon: '💻', text: 'GitHub for Apps' },
                 { icon: '🚀', text: 'Rapid Idea Evolution' },
                 { icon: '🔍', text: 'Optimized for Open AI and Local Models' },
@@ -405,8 +421,8 @@
             const animatedFeaturesContainer = document.getElementById('animated-features');
             features.forEach((feature, index) => {
                 const featureBox = document.createElement('div');
-                featureBox.classList.add('animated-feature-box', 'glow');
-                featureBox.style.animationDelay = `${index * 0.3}s`; // Stagger animation
+                featureBox.classList.add('animated-feature-box');
+                featureBox.style.animationDelay = `${index * 0.8}s`; // Stagger animation
                 featureBox.innerHTML = `<span class="feature-icon">${feature.icon}</span> ${feature.text}`;
                 animatedFeaturesContainer.appendChild(featureBox);
             });
@@ -414,40 +430,19 @@
             document.getElementById('scrollable-features').style.display = 'block';
         }
 
-        // Generate random colors similar to the initial color theme
-        function getRandomColor() {
-            const baseColor = 128; // base for mid-tone gray
-            const variation = 40; // variation range for color components
-            const r = baseColor + Math.floor(Math.random() * variation - variation / 2);
-            const g = baseColor + Math.floor(Math.random() * variation - variation / 2);
-            const b = baseColor + Math.floor(Math.random() * variation - variation / 2);
-            return `rgb(${r},${g},${b})`;
-        }
-
-        // Sober color options for the ज्ञा character
-        const mainCharacter = document.querySelector('main h1');
-        const headerLogo = document.querySelector('header div');
-
-        function changeColor() {
-            const randomColor = getRandomColor();
-            mainCharacter.style.color = randomColor;
-            headerLogo.style.color = randomColor;
-        }
-
-        // setInterval(changeColor, 3000); // Change color every 3 seconds
-
-        // Disable the feature icon by default
-        const featureIcon = document.getElementById("feature-icon");
-        if (!featureFlagEnabled) {
-            featureIcon.style.display = "none";
+        // Disable the side panel by default
+        if (sidePanelEnabled) {
+            document.getElementById("feature-icon").style.display = "block";
+        } else {
+            document.getElementById("feature-icon").style.display = "none";
         }
 
         function openFeaturePanel() {
-            if (featureSidePanelFlagEnabled) {
+            if (sidePanelEnabled) {
                 document.getElementById("feature-panel").style.width = "30%";
                 document.getElementById("main-content").style.marginRight = "30%";
             } else {
-                console.log("Feature is disabled");
+                console.log("Feature panel is disabled");
             }
         }
 
