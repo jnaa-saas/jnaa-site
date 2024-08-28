@@ -284,8 +284,7 @@
         <div class="text-2xl font-extrabold glow fade-in">
             ज्ञा | jnaa
         </div>
-        <img src="images/340-coding.png" id="feature-icon" class="w-10 h-10 cursor-pointer glow-icon"
-            onclick="openFeaturePanel()" title="Features" alt="Features">
+
     </header>
 
     <main id="main-content">
@@ -298,7 +297,7 @@
             <!-- Animated feature boxes will be injected here -->
         </div>
 
-        <section class="py-12 feature-marquee" id="scrollable-features">
+        <section class="py-16 feature-marquee" id="scrollable-features">
             <div class="max-w-full mx-auto px-4">
                 <div class="feature-marquee-content">
                     <div class="feature-box">
@@ -372,6 +371,7 @@
 
         const floatingCharactersEnabled = true;
         const featureFlagEnabled = true; // Feature flag variable for animated features
+        const featureSidePanelFlagEnabled = false;
 
         if (floatingCharactersEnabled) {
             const floatingCharactersContainer = document.createElement('div');
@@ -443,7 +443,7 @@
         }
 
         function openFeaturePanel() {
-            if (featureFlagEnabled) {
+            if (featureSidePanelFlagEnabled) {
                 document.getElementById("feature-panel").style.width = "30%";
                 document.getElementById("main-content").style.marginRight = "30%";
             } else {
