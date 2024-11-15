@@ -1,2 +1,0 @@
-# jnaa-site
-Landing page
